@@ -2,11 +2,11 @@ import logo from '../assets/logo.png'
 import '../styles/Banner.css'
 
 function Banner() {
-    const title = 'La maison jungle'
+    const title = 'Trend Giphy App'
     return (
         <div className='lmj-banner'>
-            <img src={logo} alt='La maison jungle' className='lmj-logo' />
-            <h1 className='lmj-title'>{title}</h1>
+            <img src={logo} alt='Trend Giphy App' className='lmj-logo' />
+            <h2 className='lmj-title'>{title}</h2>
         </div>
     )
 }

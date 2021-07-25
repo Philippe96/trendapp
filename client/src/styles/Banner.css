@@ -7,10 +7,19 @@
 	justify-content: flex-end;
 	flex-direction: row;
 	align-items: center;
+	
+	color: white;
+	background-color: #3f4466;
+	padding: 32px;
 }
 
 .lmj-title {
 	padding-left: 32px;
+}
+
+.search {
+	position: absolute;
+	left: 32px;
 }
 
 .lmj-logo {
