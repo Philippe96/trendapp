@@ -5,13 +5,7 @@ var cors = require('cors')
 var app = express()
 app.use(cors())
 
-app.get("/", async (req, res) => {
-    res.json({
-        'Ping': 'Pong'
-    })
-})
-
-app.get("/:keyword/:keyword2", async (req, res) => {
+app.get("/api/trends/:keyword/:keyword2", async (req, res) => {
 
     try {
 
@@ -90,7 +84,8 @@ app.get("/:keyword/:keyword2", async (req, res) => {
         console.log(err)
     }
 })
-app.get('/:country', async (req, res) => {
+
+app.get('/api/trends/:country', async (req, res) => {
     try {
         var result = []
         await googleTrends.dailyTrends({

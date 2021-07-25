@@ -7,7 +7,7 @@ function GifsList() {
 	const [listeGifs, setListeGifs] = useState([]);
 
 	useEffect(() => {
-		fetch("/FR")
+		fetch("api/trends/FR")
 		  .then(res => {
 			  	//console.log(res.json());
 				res.json().then((trends) => {
