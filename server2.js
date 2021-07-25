@@ -91,21 +91,22 @@ app.get("/:keyword/:keyword2", async (req, res) => {
 })
 app.get('/:country', async (req, res) => {
     try {
-        /*var result = []
+        var result = []
         await googleTrends.dailyTrends({
-            geo: "US"
+            geo: req.params.country
         }).then(function(results) {
-            console.log(results)
-            var arr = JSON.parse(results).default.trendingSearchesDays[0].trendingSearches
-            for (var i = 0; i < arr.length; i++) {
-                result.push(arr[i].title.query)
-            }
+            //console.log(results)
+            var arr = JSON.parse(results).default.trendingSearchesDays;
+            //for (var i = 0; i < arr.length; i++) {
+                
+                result.push(arr[0].trendingSearches[0].title.query)
+            //}
             res.json(result)
-        })*/
+        })
 
-        googleTrends.dailyTrends({
+        /*googleTrends.dailyTrends({
             //trendDate: new Date('2020-07-23'),
-            geo: 'FR',
+            geo: req.params.country,
           }, function(err, results) {
             if (err) {
               console.log(err);
@@ -114,14 +115,23 @@ app.get('/:country', async (req, res) => {
               console.log(results.default);
             }
             res.json(JSON.parse(results).default.trendingSearchesDays[0])
-          });
+          });*/
         //res.json({'trend1':trend1,'trend2':trend2})
     } catch (err) {
         console.log(err)
     }
 })
 
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'client/build')));
+      
+    // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+  }
 
-app.listen(process.env.PORT || '3001', function() {
+app.listen(process.env.PORT || '5000', function() {
     console.log("Server started!!")
 })
