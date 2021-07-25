@@ -1,4 +1,5 @@
 const googleTrends = require('google-trends-api');
+const path = require('path');
 var express = require('express')
 var cors = require('cors')
 var app = express()
